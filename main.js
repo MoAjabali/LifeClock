@@ -29,11 +29,10 @@ myButton.onclick = ()=>{
     let years = age/1000/60/60/24/365;
     let months = (years - parseInt(years)) * 12;
     let days = (months - parseInt(months)) * 30;
-    document.getElementById("yearsNo").innerText = parseInt(years);
-    document.getElementById("monthsNo") .innerText = parseInt(months);
-    document.getElementById("daysNo") .innerText = parseInt(days);
+    counter(document.getElementById("yearsNo"), parseInt(years));
+    counter(document.getElementById("monthsNo"), parseInt(months));
+    counter(document.getElementById("daysNo"), parseInt(days));
   }
-  console.log("Have you Clicked me? " + clicked);
 };
 
 // validation
@@ -79,4 +78,15 @@ function validField(field){
   field.classList.remove("not-valid-boarder");
   document.querySelector(`.${field.getAttribute("id")} label`).classList.remove("not-valid-color");
   parents.innerHTML = "";
+}
+
+// counter
+
+function counter(element, finish){
+  let counter=0;
+  element.innerText = counter;
+  let timer = setInterval(()=>{
+    element.innerText++;
+    if(element.innerText==finish) clearInterval(timer);
+  }, 60)
 }
