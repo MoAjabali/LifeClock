@@ -19,19 +19,16 @@ myButton.onclick = ()=>{
   validField(month);
   validField(day);
   
-  let isYearValid = validation(year, now);
+  let isYearValid = validation(year, now.getFullYear());
   let isMonthValid = validation(month, 12);
   let isDayValid = validation(day, daysOfMonths[month.value-1] || 31);
 
   if ( isYearValid && isMonthValid && isDayValid){
     birthDay = new Date(year.value, month.value - 1, day.value);
-    let age = now - birthDay;
-    let years = age/1000/60/60/24/365;
-    let months = (years - parseInt(years)) * 12;
-    let days = (months - parseInt(months)) * 30;
-    counter(document.getElementById("yearsNo"), parseInt(years));
-    counter(document.getElementById("monthsNo"), parseInt(months));
-    counter(document.getElementById("daysNo"), parseInt(days));
+    let age = ageCalc(now, birthDay);
+    counter(document.getElementById("yearsNo"), age.ageInYears);
+    counter(document.getElementById("monthsNo"), age.ageInMonths);
+    counter(document.getElementById("daysNo"), age.ageInDays);
   }
 };
 
@@ -86,7 +83,24 @@ function counter(element, finish){
   let counter=0;
   element.innerText = counter;
   let timer = setInterval(()=>{
+    if(element.innerText==finish) return clearInterval(timer);
     element.innerText++;
-    if(element.innerText==finish) clearInterval(timer);
   }, 60)
+}
+function ageCalc(now, birthDay){
+  let ageInYears = now.getFullYear() - birthDay.getFullYear();
+  let ageInMonths = now.getMonth() - birthDay.getMonth();
+  let ageInDays = now.getDate() - birthDay.getDate();
+
+  if(ageInDays<0) {
+    ageInMonths--;
+    ageInDays += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); 
+    // ageInDays /=0;
+  }
+  if(ageInMonths<0){
+    ageInYears--;
+    ageInMonths+=12;
+  }
+
+  return {ageInYears, ageInMonths, ageInDays};
 }
