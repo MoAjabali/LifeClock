@@ -1,5 +1,5 @@
 # Life Clock (Age Calculator App 🧮)
-This project is a simple age calculator. The user enters their date of birth (year, month, and day), and the app calculates their age in years, months, and days. It includes input validation and animated number increments. Click [here](https://mohammed-aljablai.github.io/LifeClock/) to visit the website 😊.
+This project is a simple age calculator. The user enters their date of birth (year, month, and day), and the app calculates their age in years, months, and days. It includes input validation and animated number increments. Click [here](https://MoAjabali.github.io/LifeClock/) to visit the website 😊.
 
 **Note:** This is a solution to the [Age Calculator App Challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q).
 ![Desktop preview](./media/design/desktop-preview.jpg)
@@ -48,4 +48,4 @@ I implemented all of the above requirements. Additionally, I included input vali
 <!-- - Live Site URL: [Title]() -->
 
 ## Author
-- Me 😎 ([@mohammed-Aljablai](https://github.com/mohammed-aljablai))
+- Me 😎 ([@mohammed-Aljablai](https://github.com/MoAjabali))
